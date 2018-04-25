@@ -79,23 +79,23 @@ type Message struct {
 	// optional extra headers to add to the message (most headers are allowed)
 	Headers map[string]string `json:"headers,omitempty"`
 	// whether or not this message is important, and should be delivered ahead of non-important messages
-	Important bool `json:"important,omitempty"`
+	Important *bool `json:"important,omitempty"`
 	// whether or not to turn on open tracking for the message
-	TrackOpens bool `json:"track_opens,omitempty"`
+	TrackOpens *bool `json:"track_opens,omitempty"`
 	// whether or not to turn on click tracking for the message
-	TrackClicks bool `json:"track_clicks,omitempty"`
+	TrackClicks *bool `json:"track_clicks,omitempty"`
 	// whether or not to automatically generate a text part for messages that are not given text
-	AutoText bool `json:"auto_text,omitempty"`
+	AutoText *bool `json:"auto_text,omitempty"`
 	// whether or not to automatically generate an HTML part for messages that are not given HTML
-	AutoHTML bool `json:"auto_html,omitempty"`
+	AutoHTML *bool `json:"auto_html,omitempty"`
 	// whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
-	InlineCSS bool `json:"inline_css,omitempty"`
+	InlineCSS *bool `json:"inline_css,omitempty"`
 	// whether or not to strip the query string from URLs when aggregating tracked URL data
-	URLStripQS bool `json:"url_strip_qs,omitempty"`
+	URLStripQS *bool `json:"url_strip_qs,omitempty"`
 	// whether or not to expose all recipients in to "To" header for each email
-	PreserveRecipients bool `json:"preserve_recipients,omitempty"`
+	PreserveRecipients *bool `json:"preserve_recipients,omitempty"`
 	// set to false to remove content logging for sensitive emails
-	ViewContentLink bool `json:"view_content_link,omitempty"`
+	ViewContentLink *bool `json:"view_content_link,omitempty"`
 	// an optional address to receive an exact copy of each recipient's email
 	BCCAddress string `json:"bcc_address,omitempty"`
 	// a custom domain to use for tracking opens and clicks instead of mandrillapp.com
@@ -105,7 +105,7 @@ type Message struct {
 	// a custom domain to use for the messages's return-path
 	ReturnPathDomain string `json:"return_path_domain,omitempty"`
 	// whether to evaluate merge tags in the message. Will automatically be set to true if either merge_vars or global_merge_vars are provided.
-	Merge bool `json:"merge,omitempty"`
+	Merge *bool `json:"merge,omitempty"`
 	// the merge tag language to use when evaluating merge tags, either mailchimp or handlebars
 	MergeLanguage string `json:"merge_language,omitempty"`
 	// global merge variables to use for all recipients. You can override these per recipient.
@@ -129,7 +129,7 @@ type Message struct {
 	// an array of embedded images to add to the message
 	Images []*Attachment `json:"images,omitempty"`
 	// enable a background sending mode that is optimized for bulk sending. In async mode, messages/send will immediately return a status of "queued" for every recipient. To handle rejections when sending in async mode, set up a webhook for the 'reject' event. Defaults to false for messages with no more than 10 recipients; messages with more than 10 recipients are always sent asynchronously, regardless of the value of async.
-	Async bool `json:"-"`
+	Async *bool `json:"-"`
 	// the name of the dedicated ip pool that should be used to send the message. If you do not have any dedicated IPs, this parameter has no effect. If you specify a pool that does not exist, your default pool will be used instead.
 	IPPool string `json:"-"`
 	// when this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format. If you specify a time in the past, the message will be sent immediately. An additional fee applies for scheduled email, and this feature is only available to accounts with a positive balance.
