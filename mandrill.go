@@ -251,7 +251,7 @@ func (c *Client) MessagesSend(message *Message) (responses []*Response, err erro
 
 	data.Key = c.Key
 	data.Message = message
-	data.Async = message.Async
+	data.Async = *message.Async
 	data.IPPool = message.IPPool
 	data.SendAt = message.SendAt
 
@@ -278,7 +278,7 @@ func (c *Client) MessagesSendTemplate(message *Message, templateName string, con
 	data.TemplateName = templateName
 	data.TemplateContent = ConvertMapToVariables(contents)
 	data.Message = message
-	data.Async = message.Async
+	data.Async = *message.Async
 	data.IPPool = message.IPPool
 	data.SendAt = message.SendAt
 
